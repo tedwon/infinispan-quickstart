@@ -1,7 +1,9 @@
 package org.infinispan.quickstart;
 
+import org.infinispan.Cache;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
+import org.infinispan.manager.DefaultCacheManager;
 import org.junit.Test;
 
 /**
@@ -12,6 +14,28 @@ import org.junit.Test;
  * @version 0.1.0
  */
 public class InfinispanSimpleTest {
+
+    /**
+     * Embedded Cache Test.
+     *
+     * Local Cache.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testEmbeddedCache() throws Exception {
+
+        DefaultCacheManager manager = new DefaultCacheManager();
+        Cache<String, String> cache = manager.getCache();
+
+        cache.put("car", "ferrari");
+
+        assert cache.get("car").equals("ferrari");
+
+        //remove the data
+        cache.remove("car");
+        assert !cache.containsKey("car") : "Value must have been removed!";
+    }
 
     @Test
     public void test1() throws Exception {
