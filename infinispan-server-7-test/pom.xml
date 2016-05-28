@@ -46,7 +46,7 @@
            resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <infinispan.version>7.0.0.Alpha1</infinispan.version>
+        <infinispan.version>8.2.2.Final</infinispan.version>
     </properties>
 
     <dependencies>

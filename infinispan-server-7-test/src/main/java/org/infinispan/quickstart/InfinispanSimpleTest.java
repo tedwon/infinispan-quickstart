@@ -20,18 +20,16 @@ public class InfinispanSimpleTest {
 
         //obtain a handle to the remote default cache
 //        RemoteCache<String, String> remoteCache = remoteCacheManager.getCache();
-        RemoteCache<String, String> remoteCache = remoteCacheManager.getCache("namedCache");
+        RemoteCache<String, String> remoteCache = remoteCacheManager.getCache("myJBUGKoreaCache");
 
         //now add something to the cache and make sure it is there
         for (int i = 0; i < 1000000; i++) {
-            remoteCache.put("car" + i, "ferrari");
-            System.out.println(i);
+            remoteCache.put("car" + i, "ferrari" + i);
+            String value = remoteCache.get("car" + i);
+            System.out.println(value);
         }
 
-        int size = remoteCache.size();
-
+        int size = remoteCache.keySet().size();
         System.out.println(size);
-
-
     }
 }
